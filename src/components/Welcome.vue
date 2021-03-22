@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name:"Welcome"
+    name:"商品推荐管理"
 };
 </script>
 

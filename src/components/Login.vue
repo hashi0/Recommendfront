@@ -8,8 +8,8 @@
             <!-- 表单区域 -->
             <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login-form">
                 <!-- 用户名 -->
-                <el-form-item prop="username">
-                    <el-input v-model="loginForm.username" prefix-icon="el-icon-user-solid"></el-input>
+                <el-form-item prop="user_id">
+                    <el-input v-model="loginForm.user_id" prefix-icon="el-icon-user-solid"></el-input>
                 </el-form-item>
                 <!-- 密码 -->
                 <el-form-item prop="password">
@@ -29,28 +29,18 @@ export default {
     data(){
         return {
             loginForm:{
-                username:'',
+                user_id:'',
                 password:''
             },
             loginFormRules:{
-                username:[{
+                user_id:[{
                     required:true,
-                    message:'请输入用户名',
-                    trigger:'blur'
-                },{
-                    min:5,
-                    max:10,
-                    message:'长度在 5 到 10 个字符',
+                    message:'请输入用户ID',
                     trigger:'blur'
                 }],
                 password:[{
                     required:true,
                     message:'请输入密码',
-                    trigger:'blur'
-                },{
-                    min:6,
-                    max:16,
-                    message:'长度在 6 到 16 个字符',
                     trigger:'blur'
                 }]
             }

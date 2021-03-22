@@ -8,7 +8,7 @@
         <el-card class="box-card">
             <el-row :gutter="20">
                 <el-col :span="7">
-                    <el-input placeholder="请输入商品名" class="input-with-select" v-model="queryInfo.query" clearable @clear="getGoodList">
+                    <el-input placeholder="请输入商品名称查询" class="input-with-select" v-model="queryInfo.query" clearable @clear="getGoodList">
                         <el-button slot="append" icon="el-icon-search" @click="getGoodList"/>
                     </el-input>
                 </el-col>
@@ -18,13 +18,13 @@
             </el-row>
             <el-table :data="goodList" border stripe>
                 <el-table-column type="index"></el-table-column>
-                <el-table-column label="ID" prop="id"></el-table-column>
-                <el-table-column label="商品名称" prop="name"></el-table-column>
-                <el-table-column label="商品价格" prop="price"></el-table-column>
-                <el-table-column label="商品描述" prop="description"></el-table-column>
-                <el-table-column label="操作" width="200px">
+                <el-table-column label="商品ID" prop="productId" min-width="25%"></el-table-column>
+                <el-table-column label="商品名称" prop="productName" min-width="100%"></el-table-column>
+                <el-table-column label="部门" prop="department" min-width="35%"></el-table-column>
+                <el-table-column label="货架" prop="aisle" min-width="60%"></el-table-column>
+                <el-table-column label="操作" width="100px" align="center">
                     <template slot-scope="scope">
-                        <el-tooltip class="item" effect="dark" content="购买" placement="top" :enterable="false" :hide-after="500">
+                        <el-tooltip class="item" effect="dark" content="购买" placement="top" :enterable="false" >
                             <el-button type="warning" icon="el-icon-shopping-cart-full" size="mini" @click="buyGoodHandler(scope.row)"></el-button>
                         </el-tooltip>
                     </template>
@@ -43,21 +43,24 @@
         </el-card>
         <el-dialog
             title="添加商品"
-            width="50%"
+            width="45%"
             :visible.sync="addDialogVisible" @close="addDialogClosed">
             <el-form
                 :model="addGoodForm"
                 :rules="addGoodFormRules"
                 ref="addGoodFormRef"
-                label-width="100px">
-                <el-form-item label="商品名称" prop="name">
-                    <el-input v-model="addGoodForm.name"></el-input>
+                label-width="150px">
+              <el-form-item label="商品ID" prop="productId">
+                <el-input v-model="addGoodForm.productId"></el-input>
+              </el-form-item>
+                <el-form-item label="商品名称" prop="productName">
+                    <el-input v-model="addGoodForm.productName"></el-input>
                 </el-form-item>
-                <el-form-item label="商品价格" prop="price">
-                    <el-input v-model="addGoodForm.price"></el-input>
+                <el-form-item label="商品所属部门" prop="department">
+                    <el-input v-model="addGoodForm.department"></el-input>
                 </el-form-item>
-                <el-form-item label="商品描述" prop="description">
-                    <el-input v-model="addGoodForm.description"></el-input>
+                <el-form-item label="商品所属货架" prop="aisle">
+                    <el-input v-model="addGoodForm.aisle"></el-input>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
@@ -80,27 +83,35 @@ export default {
             total:0,
             addDialogVisible:false,
             addGoodForm:{
-                name:'',
-                price:0.0,
-                description:''
+                productId:'',
+                productName:'',
+                department:'',
+                aisle:'',
+                departmentId:0,
+                aisleId:0
             },
             addGoodFormRules:{
-                name:[{
+                productId:[{
+                  required:true,
+                  message:'请输入商品ID',
+                  trigger:'blur'
+                }],
+                productName:[{
                     required:true,
                     message:'请输入商品名称',
                     trigger:'blur'
                 }],
-                price:[{
+                department:[{
                     required:true,
-                    message:'请输入商品价格',
+                    message:'请输入商品所属部门',
                     trigger:'blur'
                 }],
-                description:[{
+                aisle:[{
                     required:true,
-                    message:'请输入商品描述',
+                    message:'请输入商品所属货架',
                     trigger:'blur'
                 }],
-            },
+            }
         };
     },
     created(){
@@ -131,9 +142,12 @@ export default {
         },
         resetFormData:function(){
             this.addGoodForm={
-                name:'',
-                price:0.0,
-                description:''
+              productId:'',
+              productName:'',
+              department:'',
+              aisle:'',
+              departmentId:0,
+              aisleId:0
             };
         },
         addGoodButtonHandler:function(){
@@ -148,7 +162,12 @@ export default {
         },
         buyGoodHandler:async function(row){
             const {data:res}=await this.$http.post('good/buy?',{
-                id:row.id
+              productId:row.productId,
+              productName:row.productName,
+              department:row.department,
+              aisle:row.aisle,
+              departmentId:0,
+              aisleId:0
             });
             console.log(res);
             if(res.error_code!==200) this.$message.error(res.error_msg);

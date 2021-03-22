@@ -1,3 +1,2 @@
-module.export = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/grms/': '/'
-}
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/grms/' : '/'
+module.exports = {publicPath:BASE_URL}

@@ -2,7 +2,7 @@
     <el-container class="home-container">
         <el-header>
             <div class="logo-box">
-                <span>推荐引擎管理系统</span>
+                <span>商品推荐</span>
             </div>
             <el-button type="info" @click="logout">退出登录</el-button>
         </el-header>
@@ -54,16 +54,6 @@ export default {
                     name:'用户列表',
                     order:1,
                     path:'user/all'
-                },{
-                    id:12,
-                    name:'添加用户',
-                    order:2,
-                    path:'user/add'
-                },{
-                    id:13,
-                    name:'删除用户',
-                    order:3,
-                    path:'user/delete'
                 }],
                 order:1,
                 path:''
@@ -75,16 +65,6 @@ export default {
                     name:'商品列表',
                     order:1,
                     path:'good/all'
-                },{
-                    id:22,
-                    name:'添加商品',
-                    order:2,
-                    path:'good/add'
-                },{
-                    id:23,
-                    name:'删除商品',
-                    order:3,
-                    path:'good/delete'
                 }],
                 order:2,
                 path:''

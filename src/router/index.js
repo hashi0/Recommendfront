@@ -4,7 +4,7 @@ import Login from "@/components/Login";
 import Home from "@/components/Home";
 import Welcome from "@/components/Welcome";
 import User from "@/components/user/User";
-import Good from "@/components/good/Good";
+import Products from "@/components/Products/Products";
 import Order from "@/components/order/Order";
 import AllResult from "@/components/result/AllResult";
 import MyResult from "@/components/result/MyResult";
@@ -31,7 +31,7 @@ const routes = [{
             component: User,
         }, {
             path: '/good/all',
-            component: Good,
+            component: Products,
         }, {
             path: '/order/all',
             component: Order,

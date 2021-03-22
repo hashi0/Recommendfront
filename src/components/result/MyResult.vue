@@ -7,9 +7,14 @@
         </el-breadcrumb>
         <el-card class="box-card">
             <el-table :data="resultList" border stripe>
-                <el-table-column type="index"></el-table-column>
-                <el-table-column label="用户ID" prop="uid"></el-table-column>
-                <el-table-column label="商品ID" prop="gid"></el-table-column>
+              <el-table-column type="index"></el-table-column>
+              <el-table-column label="推荐结果ID" prop="resultId"></el-table-column>
+              <el-table-column label="用户ID" prop="userId"></el-table-column>
+              <el-table-column label="商品ID" prop="productId"></el-table-column>
+              <el-table-column label="商品名称" prop="productName"></el-table-column>
+              <el-table-column label="商品部门" prop="department"></el-table-column>
+              <el-table-column label="商品货架" prop="aisle"></el-table-column>
+              <el-table-column label="指数" prop="exp"></el-table-column>
             </el-table>
             <el-pagination
                 @size-change="handleSizeChange"
