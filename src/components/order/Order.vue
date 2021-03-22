@@ -8,10 +8,10 @@
         <el-card class="box-card">
             <el-table :data="orderList" border stripe>
                 <el-table-column type="index"></el-table-column>
-                <el-table-column label="订单ID" prop="orderId"></el-table-column>
-                <el-table-column label="用户ID" prop="userId"></el-table-column>
-                <el-table-column label="商品ID" prop="productId"></el-table-column>
-                <el-table-column label="商品名称" prop="productName"></el-table-column>
+                <el-table-column label="订单ID" prop="orderId" min-width="30%"></el-table-column>
+                <el-table-column label="用户ID" prop="userId" min-width="30%"></el-table-column>
+                <el-table-column label="商品ID" prop="productId" min-width="35%"></el-table-column>
+                <el-table-column label="商品名称" prop="productName" min-width="100%"></el-table-column>
             </el-table>
             <el-pagination
                 @size-change="handleSizeChange"

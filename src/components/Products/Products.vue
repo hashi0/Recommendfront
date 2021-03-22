@@ -24,7 +24,7 @@
                 <el-table-column label="货架" prop="aisle" min-width="60%"></el-table-column>
                 <el-table-column label="操作" width="100px" align="center">
                     <template slot-scope="scope">
-                        <el-tooltip class="item" effect="dark" content="购买" placement="top" :enterable="false" >
+                        <el-tooltip class="item" effect="dark" content="购买" placement="top" :enterable="false" :hide-after="1500">
                             <el-button type="warning" icon="el-icon-shopping-cart-full" size="mini" @click="buyGoodHandler(scope.row)"></el-button>
                         </el-tooltip>
                     </template>
