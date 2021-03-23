@@ -44,6 +44,7 @@ export default {
     },
     methods:{
         getOrderList:async function(){
+            this.$message.info("查询中……请稍等");
             const {data:res}=await this.$http.get('order/all',{params:this.queryInfo});
             if(res.error_code!==200) return this.$message.error(res.error_msg);
             this.$message.success(res.error_msg);
