@@ -8,7 +8,7 @@
         <el-card class="box-card">
             <el-row :gutter="20">
                 <el-col :span="7">
-                    <el-input placeholder="请输入用户ID" class="input-with-select" v-model="queryInfo.uid" clearable @clear="getResultList" @keyup.enter.native="getResultList">
+                    <el-input placeholder="请输入用户ID(1-1000)" class="input-with-select" v-model="queryInfo.uid" clearable @clear="getResultList" @keyup.enter.native="getResultList">
                         <el-button slot="append" icon="el-icon-search" @click="getResultList"/>
                     </el-input>
                 </el-col>
