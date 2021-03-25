@@ -89,7 +89,7 @@ export default {
                     path:'result/my'
                 },{
                     id:42,
-                    name:'全部推荐',
+                    name:'推荐查询',
                     order:2,
                     path:'result/all'
                 },],

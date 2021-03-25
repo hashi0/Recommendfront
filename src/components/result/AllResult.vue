@@ -3,12 +3,12 @@
         <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>推荐管理</el-breadcrumb-item>
-            <el-breadcrumb-item>所有推荐列表</el-breadcrumb-item>
+            <el-breadcrumb-item>推荐列表查询</el-breadcrumb-item>
         </el-breadcrumb>
         <el-card class="box-card">
             <el-row :gutter="20">
                 <el-col :span="7">
-                    <el-input placeholder="请输入用户ID" class="input-with-select" v-model="queryInfo.uid" clearable @clear="getResultList">
+                    <el-input placeholder="请输入用户ID" class="input-with-select" v-model="queryInfo.uid" clearable @clear="getResultList" @keyup.enter.native="getResultList">
                         <el-button slot="append" icon="el-icon-search" @click="getResultList"/>
                     </el-input>
                 </el-col>
@@ -50,7 +50,7 @@ export default {
         };
     },
     created(){
-        this.getResultList();
+        this.$message.info("请输入用户ID进行查询");
     },
     methods:{
         getResultList:async function(){

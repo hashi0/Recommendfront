@@ -8,7 +8,7 @@
         <el-card class="box-card">
             <el-row :gutter="20">
                 <el-col :span="7">
-                    <el-input placeholder="请输入商品名称查询" class="input-with-select" v-model="queryInfo.query" clearable @clear="getGoodList">
+                    <el-input placeholder="请输入商品名称查询" class="input-with-select" v-model="queryInfo.query" clearable @clear="getGoodList" @keyup.enter.native="getGoodList">
                         <el-button slot="append" icon="el-icon-search" @click="getGoodList"/>
                     </el-input>
                 </el-col>

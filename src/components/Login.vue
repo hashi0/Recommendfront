@@ -9,15 +9,15 @@
             <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login-form">
                 <!-- 用户名 -->
                 <el-form-item prop="user_id">
-                    <el-input v-model="loginForm.user_id" prefix-icon="el-icon-user-solid"></el-input>
+                    <el-input v-model="loginForm.user_id" prefix-icon="el-icon-user-solid" ></el-input>
                 </el-form-item>
                 <!-- 密码 -->
                 <el-form-item prop="password">
-                    <el-input type="password" v-model="loginForm.password" prefix-icon="el-icon-lock"></el-input>
+                    <el-input type="password" v-model="loginForm.password" prefix-icon="el-icon-lock" @keyup.enter.native="login"></el-input>
                 </el-form-item>
                 <!-- 按钮 -->
                 <el-form-item class="login-buttons">
-                    <el-button type="primary" @click="login">登录</el-button>
+                    <el-button type="primary" @click="login" >登录</el-button>
                     <el-button type="info" @click="resetLoginForm">重置</el-button>
                 </el-form-item>
             </el-form>
@@ -65,14 +65,14 @@ export default {
 </script>
 <style lang="less" scoped>
 .login-container{
-    background-color: #6495ED;
+    background-color: #92c3ec;
     height: 100%;
 }
 
 .login-box{
     width: 450px;
     height: 300px;
-    background-color: white;
+    background-color: #ffffff;
     position: absolute;
     left: 50%;
     top: 50%;
